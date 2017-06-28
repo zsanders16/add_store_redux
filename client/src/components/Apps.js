@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   Container,
-  Grid, 
+  Grid,
   Header,
   Card,
   Image,
-  Dropdown, 
+  Dropdown,
   Divider,
   Button,
 } from 'semantic-ui-react';
@@ -56,7 +56,7 @@ class Apps extends React.Component {
     let { category } = this.state;
     return (
       <Container>
-        <Header as="h3" textAlign="center">Apps</Header>
+        <Header as="h3" textAlign="center">Apps<span><Button floated='right' as = {Link} to={"/apps/AppForm/"} basic color='blue'>New App</Button></span></Header>
         <Dropdown
           placeholder="Filter By Category"
           fluid
@@ -65,7 +65,7 @@ class Apps extends React.Component {
           onChange={ (e, data) => this.setState({ category: data.value }) }
           value={category}
         />
-        { category &&   
+        { category &&
             <Button
               fluid
               basic
@@ -92,8 +92,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Apps);
-
-
-
-
-

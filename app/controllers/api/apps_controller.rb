@@ -21,7 +21,7 @@ class Api::AppsController < ApplicationController
   def update
     if @app.update(app_params)
       render json: @app
-    else 
+    else
       render json: { errors: @app.errors.full_messages.join(',') }, status: 422
     end
   end
@@ -43,11 +43,3 @@ class Api::AppsController < ApplicationController
     end
 
 end
-
-
-
-
-
-
-
-

@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Divider, Header, Image, Container, Table } from 'semantic-ui-react';
+import { Divider, Header, Image, Container, Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { deleteApp } from '../actions/apps'
 
-const AppView = ({ app = {} }) => (
+const AppView = ({app = {}, dispatch, history }) => (
+
   <Container>
     <Link to="/apps">View All Apps</Link>
     <Header as="h3" textAlign="center">{app.name}</Header>
@@ -12,6 +14,7 @@ const AppView = ({ app = {} }) => (
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell />
+          <Button basic color='green'>Add To Cart</Button>
           <Table.HeaderCell />
         </Table.Row>
       </Table.Header>
@@ -39,6 +42,20 @@ const AppView = ({ app = {} }) => (
         </Table.Row>
       </Table.Body>
     </Table>
+
+    <Button.Group floated='right'>
+
+      <Button as = {Link} to={`/apps/${app.id}/AppForm/`} basic color='blue'>Edit</Button>
+      <Button
+        onClick={ () => {
+          dispatch(deleteApp(app.id));
+          history.push('/apps');
+        } }
+        basic color='red'
+      >
+        Delete
+      </Button>
+    </Button.Group>
   </Container>
 )
 

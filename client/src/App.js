@@ -10,7 +10,6 @@ const App = () => (
     <Route path="/apps" component={FetchApps} />
     <Route component={NoMatch} />
   </Switch>
-) 
+)
 
 export default App;
-
